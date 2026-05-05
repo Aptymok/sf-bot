@@ -1,24 +1,23 @@
-<html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>System Friction Institute · Dictamen SF-XXX · Medición de Fricción Individual</title>
+<title>System Friction Institute · Dictamen SF-004</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;family=Syncopate:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
     --gold: #D4AF37;
     --gold-dim: rgba(212, 175, 55, 0.35);
-    --gold-faint: rgba(212, 175, 55, 0.12);
+    --paper: #F7F4EA;
     --ink: #1A1817;
     --ink2: #3C3732;
     --ink3: #6B635A;
-    --paper: #F7F4EA;
     --mono: 'JetBrains Mono', monospace;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --disp: 'Syncopate', sans-serif;
   }
-
   body {
     background: #2E2B27;
     display: flex;
@@ -26,61 +25,28 @@
     align-items: center;
     padding: 20px 12px;
   }
-
-  /* === BASE: MÓVIL (A4 vertical: alto = ancho * 1.414) === */
   .page {
     width: 100%;
     max-width: 100%;
-    position: relative;
     background: var(--paper);
     margin-bottom: 24px;
     box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
-    page-break-after: always;
-    break-inside: avoid;
     border-radius: 2px;
-    /* Alto fijo = proporción A4 (1:1.414) */
-    height: calc(100vw * 1.414);
-    max-height: none;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
   }
-
-  /* scroll elegante */
-  .page::-webkit-scrollbar {
-    width: 4px;
+  @media (min-width: 768px) {
+    .page { width: 550px; max-width: 550px; margin-bottom: 30px; }
   }
-  .page::-webkit-scrollbar-track {
-    background: var(--gold-faint);
-  }
-  .page::-webkit-scrollbar-thumb {
-    background: var(--gold-dim);
-    border-radius: 2px;
-  }
-
-  .page::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    pointer-events: none;
-    opacity: 0.45;
-    z-index: 0;
-  }
-
   .col {
     display: flex;
     flex-direction: column;
-    padding: 24px 20px;
+    padding: 28px 24px;
     position: relative;
     z-index: 2;
-    min-height: 100%;
   }
-
-  /* Tipografía fluida */
   .t-kicker {
     font-family: var(--mono);
-    font-size: clamp(0.5rem, 3.5vw, 0.7rem);
+    font-size: 0.65rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
@@ -89,66 +55,31 @@
   .t-title {
     font-family: var(--disp);
     font-weight: 700;
-    font-size: clamp(1.2rem, 6vw, 1.8rem);
+    font-size: 1.6rem;
     line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.8rem;
     color: var(--ink);
-  }
-  .t-section-title {
-    font-family: var(--disp);
-    font-weight: 600;
-    font-size: clamp(0.65rem, 3.5vw, 0.85rem);
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    margin: 0.6rem 0 0.3rem 0;
-    text-transform: uppercase;
+    margin-bottom: 0.8rem;
   }
   .t-body {
     font-family: var(--serif);
-    font-size: clamp(0.7rem, 4vw, 0.9rem);
+    font-size: 0.85rem;
     line-height: 1.55;
     margin-bottom: 0.6rem;
     color: var(--ink2);
     text-align: justify;
   }
-  .t-body-sm {
-    font-family: var(--serif);
-    font-size: clamp(0.6rem, 3.5vw, 0.75rem);
-    line-height: 1.5;
-    color: var(--ink3);
-  }
-  .t-mono {
-    font-family: var(--mono);
-    font-size: clamp(0.55rem, 3.2vw, 0.7rem);
-    line-height: 1.6;
-    color: var(--ink2);
-  }
-  .t-mono-sm {
-    font-family: var(--mono);
-    font-size: clamp(0.45rem, 2.8vw, 0.6rem);
-    line-height: 1.5;
-    color: var(--ink3);
-  }
   .gold-rule {
     width: 48px;
     height: 1px;
     background: var(--gold);
-    margin: 0.8rem 0;
+    margin: 1rem 0;
     opacity: 0.6;
   }
-  .gold-rule-full {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-    margin: 0.8rem 0;
-  }
-
   .var-grid {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin: 0.6rem 0;
+    margin: 0.8rem 0;
   }
   .var-row {
     display: grid;
@@ -159,560 +90,248 @@
   }
   .var-code {
     font-family: var(--mono);
-    font-size: clamp(0.5rem, 3vw, 0.65rem);
+    font-size: 0.7rem;
     color: var(--gold);
     font-weight: 600;
   }
   .var-desc {
     font-family: var(--serif);
-    font-size: clamp(0.6rem, 3.5vw, 0.75rem);
+    font-size: 0.75rem;
     color: var(--ink2);
     line-height: 1.4;
   }
-
-  .relacion-critica {
-    background: var(--gold-faint);
-    padding: 0.75rem;
-    margin: 0.6rem 0;
+  .metric-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .metric-card {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid var(--gold-dim);
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .metric-value {
     font-family: var(--mono);
-    font-size: clamp(0.5rem, 3vw, 0.65rem);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+  .flow-diag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    line-height: 1.8;
     color: var(--ink);
-    border-left: 2px solid var(--gold);
-  }
-
-  .glyph-friction {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    width: 24px;
-    height: 24px;
-    opacity: 0.2;
-    pointer-events: none;
-  }
-  .glyph-friction svg {
-    width: 100%;
-    height: 100%;
-  }
-  .corner-mark {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-family: var(--mono);
-    font-size: 0.45rem;
-    letter-spacing: 0.2em;
-    color: var(--gold-dim);
-    opacity: 0.4;
+    border-left: 1px dashed var(--gold-dim);
+    padding-left: 1rem;
+    margin: 0.8rem 0;
   }
   .page-num {
-    position: absolute;
-    bottom: 12px;
-    right: 16px;
+    text-align: right;
     font-family: var(--mono);
     font-size: 0.5rem;
     color: var(--gold);
     opacity: 0.5;
-    z-index: 3;
-    background: var(--paper);
-    padding: 0 4px;
+    padding: 0 24px 12px 0;
   }
-  .rombo-sf {
-    width: 48px;
-    height: 48px;
-    border: 1px solid var(--gold);
-    transform: rotate(45deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  .rombo-sf span {
-    transform: rotate(-45deg);
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    opacity: 0.5;
-  }
-
-  .flow-diag {
-    font-family: var(--mono);
-    font-size: clamp(0.5rem, 3.2vw, 0.7rem);
-    line-height: 1.8;
-    text-align: left;
-    margin: 0.8rem 0;
-    color: var(--ink);
-    border-left: 1px dashed var(--gold-dim);
-    padding-left: 1rem;
-  }
-
-  /* === ESCRITORIO: CUADRADO 550x550 === */
-  @media (min-width: 768px) {
-    body {
-      padding: 30px 20px;
-    }
-    .page {
-      width: 550px;
-      max-width: 550px;
-      height: 550px;
-      aspect-ratio: 1 / 1;
-      margin-bottom: 30px;
-      overflow-y: auto;
-    }
-    .col {
-      padding: 28px 24px;
-      height: 100%;
-    }
-  }
-
-  /* === IMPRESIÓN: A4 vertical real === */
   @media print {
-    body { background: white; padding: 0; display: block; }
-    .page {
-      box-shadow: none;
-      margin: 0;
-      page-break-after: always;
-      width: 100%;
-      height: auto;
-      max-width: none;
-      aspect-ratio: auto;
-      overflow: visible;
-    }
-    .page::before { opacity: 0.1; }
-    .glyph-friction { opacity: 0.1; }
-    .corner-mark { opacity: 0.3; }
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; margin: 0; page-break-after: always; }
   }
-@media print {
-  .page {
-    overflow: hidden !important;
-  }
-}
-
 </style>
 </head>
- 
 <body>
+
 <!-- ═══════════════════════════════════════════════════════
-     DICTAMEN ESTRUCTURAL · SF-004
+     PORTADA
      ═══════════════════════════════════════════════════════ -->
-<!-- PÁGINA 1 · PORTADA -->
 <div class="page">
-  <div class="col" style="justify-content: center; text-align: center;">
-    <div class="t-kicker" style="margin-bottom: 1rem; letter-spacing: 0.4em;">System Friction Institute</div>
-    <div style="font-family: var(--disp); font-size: 2rem; font-weight: 700; color: var(--gold); letter-spacing: -0.02rem;">DICTAMEN</div>
-    <div style="font-family: var(--disp); font-size: 1.8rem; font-weight: 700; margin-top: -0.2rem;">ESTRUCTURAL</div>
-    <div class="gold-rule" style="margin: 1.2rem auto; width: 60px;"></div>
-    <div class="t-body-sm" style="color: var(--ink3);">SF-004 · 2026-04-20<br>Fenómeno: Subutilización Sistémica Digital</div>
-    <div class="t-body-sm" style="margin-top: 1.5rem; font-style: italic;">El sistema digital existe, pero no opera como sistema.<br>No hay falla técnica. Hay ausencia de dirección estructural.</div>
+  <div class="col" style="text-align: center;">
+    <div class="t-kicker">System Friction Institute</div>
+    <div style="font-family: var(--disp); font-size: 2rem; font-weight: 700; color: var(--gold);">DICTAMEN</div>
+    <div style="font-family: var(--disp); font-size: 1.6rem; font-weight: 700; margin-top: -0.2rem;">ESTRUCTURAL</div>
+    <div class="gold-rule" style="margin: 1.2rem auto;"></div>
+    <div class="t-body" style="color: var(--ink3);">SF-004 · <span id="fecha">{{FECHA}}</span></div>
+    <div class="t-body" style="margin-top: 1rem;">Basado en el Protocolo MOP-H<br>Modelo Integral Homeostático Multinodal v3.0</div>
   </div>
-  <div class="glyph-friction"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="0.8"><path d="M2 12 L6 8 L10 16 L14 7 L18 14 L22 10" stroke-linecap="round"></path></svg></div>
-  <div class="corner-mark">● SFI · DICTAMEN</div>
-  <div class="page-num">1 / 8</div>
-</div>
-
-
-<!-- DESCANSO VISUAL LOGO DE LA INSTITUCIÓN -->
-<div class="page">
-  <div class="col" style="justify-content: center; text-align: center;">
-  <div class="rombo-sf" style="margin-bottom: 1.2rem;"><span>SF</span></div>
-</div>
-</div>
-
-<!-- PÁGINA 2 · IDENTIFICACIÓN DEL FENÓMENO -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">01 · identificación</div>
-    <div class="t-title" style="font-size: clamp(1rem, 5vw, 1.3rem);">Fenómeno: Subutilización Sistémica Digital</div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body">El sitio web funciona como interfaz de presencia, no como sistema de captura, filtrado ni decisión. La arquitectura actual emite información, pero no procesa entrada.</div>
-    <div class="t-body-sm"><strong>Observación primaria:</strong> No se detecta ruptura. Se detecta infrautilización. El sistema es coherente con una lógica de visibilidad pasiva.</div>
-    <div class="flow-diag">
-      [SITIO ACTUAL]<br>
-      Usuario → Información → Salida<br>
-      (no retorno) · (no medición)
-    </div>
-    <div class="t-body-sm">El sistema emite. No procesa. No hay circuito.</div>
-  </div>
-  <div class="glyph-friction"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="0.8"><path d="M2 12 L6 8 L10 16 L14 7 L18 14 L22 10" stroke-linecap="round"></path></svg></div>
-  <div class="page-num">2 / 8</div>
-</div>
-
-<!-- PÁGINA 3 · DESCOMPOSICIÓN EN VARIABLES -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">02 · descomposición en variables</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1.1rem);">Variables operativas</div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">IHG</div><div class="var-desc">alto → carga dispersa sin atractor dominante</div></div>
-      <div class="var-row"><div class="var-code">NTI</div><div class="var-desc">comprometido → desalineación capacidad real vs estructura genérica</div></div>
-      <div class="var-row"><div class="var-code">LDI</div><div class="var-desc">alto → retraso adopción lógica orientada a conversión</div></div>
-      <div class="var-row"><div class="var-code">Aₑ</div><div class="var-desc">abierto no filtrado → baja calidad de interacción</div></div>
-      <div class="var-row"><div class="var-code">Sᵤ</div><div class="var-desc">bajo → no hay entropía útil, no se generan datos accionables</div></div>
-      <div class="var-row"><div class="var-code">ε</div><div class="var-desc">OLC-D débil → identidad no colapsada, ambigüedad estructural</div></div>
-      <div class="var-row"><div class="var-code">G.O.</div><div class="var-desc">activa → el sitio cumple función mínima "existir", evita evolución</div></div>
-    </div>
-    <div class="t-mono-sm" style="margin-top: 0.3rem;">Sistema presente, no operativo.</div>
-  </div>
-  <div class="page-num">3 / 8</div>
-</div>
-
-<!-- PÁGINA 4 · RELACIÓN ESTRUCTURAL -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">03 · relación estructural</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1.1rem);">Cadena causal</div>
-    <div class="relacion-critica">
-      Presencia pasiva → Ausencia de captura → Sᵤ ↓ → Aprendizaje nulo → LDI ↑ → IHG ↑ → Sistema estancado
-    </div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body">La falta de captura impide generación de datos. Sin datos, no hay ajuste. Sin ajuste, el sistema se mantiene estable pero no evoluciona.</div>
-    <div class="flow-diag">
-      No captura<br>↓<br>No datos<br>↓<br>No aprendizaje<br>↓<br>No ajuste<br>↓<br>Estancamiento
-    </div>
-    <div class="t-body-sm">Sin medición, no hay evolución.</div>
-  </div>
-  <div class="page-num">4 / 8</div>
-</div>
-
-<!-- PÁGINA 5 · ESTADO DEL SISTEMA -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">04 · estado del sistema</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1.1rem);">Arquitectura y función</div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">Tipo</div><div class="var-desc">sistema abierto no instrumentado</div></div>
-      <div class="var-row"><div class="var-code">Función dominante</div><div class="var-desc">exhibición</div></div>
-      <div class="var-row"><div class="var-code">Capacidad de expansión</div><div class="var-desc">dependiente de esfuerzo externo (ventas directas)</div></div>
-    </div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body">El sitio no participa en la operación comercial. Es un nodo aislado.</div>
-    <div class="flow-diag">
-      ACTUAL              VS           REAL<br>
-      Exhibición                       Sistema<br>
-      Información                      Decisión<br>
-      Estático                         Adaptativo
-    </div>
-    <div class="t-body-sm">Existe presencia. No existe operación.</div>
-  </div>
-  <div class="page-num">5 / 8</div>
-</div>
-
-<!-- PÁGINA 6 · INCOMPATIBILIDAD DETECTADA -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">05 · incompatibilidad</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1.1rem);">Contradicción estructural</div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">●</div><div class="var-desc"><strong>Objetivo implícito:</strong> crecimiento comercial</div></div>
-      <div class="var-row"><div class="var-code">●</div><div class="var-desc"><strong>Configuración activa:</strong> pasividad informativa</div></div>
-    </div>
-    <div class="t-body">Un sistema que no filtra, no mide y no convierte no puede sostener expansión.</div>
-    <div class="gold-rule-full"></div>
-    <div class="relacion-critica">La incompatibilidad es estructural.</div>
-    <div class="flow-diag">
-      [OBJETIVO]     [CONFIGURACIÓN]<br>
-      Crecimiento  ≠  Pasividad
-    </div>
-  </div>
-  <div class="page-num">6 / 8</div>
-</div>
-
-<!-- PÁGINA 7 · CLASIFICACIÓN -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">06 · clasificación</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1.1rem);">Estado y riesgo</div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">Estado</div><div class="var-desc">funcional limitado</div></div>
-      <div class="var-row"><div class="var-code">Riesgo</div><div class="var-desc">irrelevancia progresiva</div></div>
-      <div class="var-row"><div class="var-code">Modo de fallo</div><div class="var-desc">dependencia total de canales externos</div></div>
-    </div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body">El sistema no colapsa. Se vuelve irrelevante.</div>
-    <div class="flow-diag">
-      Hoy      → funcional<br>
-      Medio    → irrelevante<br>
-      Largo    → reemplazable
-    </div>
-  </div>
-  <div class="page-num">7 / 8</div>
-</div>
-
-<!-- PÁGINA 8 · TRAZABILIDAD -->
-<div class="page">
-  <div class="col">
-    <div class="t-kicker">07 · trazabilidad</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1.1rem);">Consistencia observacional</div>
-    <div class="t-body">Cada comportamiento observado es consistente con:</div>
-    <div class="flow-diag">
-      No captura → no aprende<br>
-      No aprende → no ajusta<br>
-      No ajusta → no crece
-    </div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body-sm">No hay anomalías. Hay consistencia con diseño actual.</div>
-    <div class="gold-rule-full"></div>
-    <div class="t-mono-sm">Loop inexistente: Entrada → ??? → Salida<br>Debe ser: Entrada → Procesamiento → Datos → Ajuste → Entrada</div>
-  </div>
-  <div class="page-num">8 / 8</div>
-</div>
-</div>
-
-<div class="page">
-  <div class="col" style="justify-content: center; text-align: center;">
-    <div class="t-kicker" style="margin-bottom: 1rem; letter-spacing: 0.4em;">System Friction Institute</div>
-    <div style="font-family: var(--disp); font-size: 2rem; font-weight: 700; color: var(--gold); letter-spacing: -0.02rem;">MIHM</div>
-    <div style="font-family: var(--disp); font-size: 1.8rem; font-weight: 700; margin-top: -0.2rem;">v3.0</div>
-        <div class="gold-rule-full"></div>
-    <div class="t-body-sm" style="color: var(--ink3);">SF-XXX · 2026-04-20<br>Modelo Integral Homeostático Multinodal v3.0</div>
-    <div class="t-body-sm" style="margin-top: 1.5rem; font-style: italic;">La observación es el instrumento.<br>Es propiedad de campo.<br>La medición modifica al instrumento y lo medido.</div>
-  </div>
-  <div class="glyph-friction"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="0.8"><path d="M2 12 L6 8 L10 16 L14 7 L18 14 L22 10" stroke-linecap="round"></path></svg></div>
-  <div class="corner-mark">● SFI · DICTAMEN</div>
-  <div class="page-num">1 / 8</div>
-</div>
-
-
-<!-- DESCANSO VISUAL LOGO DE LA INSTITUCIÓN -->
-<div class="page">
-  <div class="col" style="justify-content: center; text-align: center;">
-  <div class="rombo-sf" style="margin-bottom: 1.2rem;"><span>SF</span></div>
-</div>
+  <div class="page-num">1 / 5</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     MIHM v3.0 · MÉTRICAS OPERATIVAS
+     DIAGNÓSTICO PERSONALIZADO
      ═══════════════════════════════════════════════════════ -->
-
-<!-- MIHM · HOJA 1 · LDI -->
-<div class="page pg-black">
-  <div class="col" style="padding:0;display:flex;align-items:center;justify-content:center;">
-
-    <div class="t-kicker" style="color:#2a2a28;margin-bottom:1.2rem;text-align:center;letter-spacing:.22em;">
-      Distancia entre umbrales · LDI
-    </div>
-
-    <svg viewBox="0 0 440 250" style="width:90%;max-width:420px;height:auto;">
-      <rect x="75" y="38" width="290" height="175" fill="rgba(200,169,81,.025)" rx="2"></rect>
-      <line x1="38" y1="195" x2="408" y2="195" stroke="#1e1e1c" stroke-width=".8"></line>
-      <text x="408" y="210" fill="#2e2e2c" font-family="monospace" font-size="7.5" text-anchor="end">tiempo →</text>
-
-      <line x1="58" y1="78" x2="385" y2="78" stroke="#323230" stroke-width=".9" stroke-dasharray="6,4"></line>
-      <text x="388" y="81" fill="#484846" font-family="monospace" font-size="7">umbral declarado</text>
-
-      <path d="M 58 98 C 155 103, 255 128, 385 162" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".65"></path>
-      <text x="388" y="162" fill="rgba(200,169,81,.65)" font-family="monospace" font-size="7">umbral real</text>
-
-      <path d="M 58 78 C 155 78, 255 78, 385 78 C 255 128, 155 103, 58 98 Z" fill="rgba(200,169,81,.04)"></path>
-
-      <line x1="225" y1="82" x2="225" y2="127" stroke="rgba(184,80,80,.48)" stroke-width=".9"></line>
-      <polygon points="221,125 225,134 229,125" fill="rgba(184,80,80,.48)"></polygon>
-      <text x="230" y="114" fill="rgba(184,80,80,.58)" font-family="monospace" font-size="7">LDI</text>
-
-      <circle cx="342" cy="158" r="4" fill="none" stroke="rgba(184,80,80,.65)" stroke-width="1.2"></circle>
-      <text x="350" y="161" fill="rgba(184,80,80,.55)" font-family="monospace" font-size="7">UCAP</text>
-
-      <text x="58" y="60" fill="#2e2e2c" font-family="monospace" font-size="6.5">NTI mide</text>
-      <text x="58" y="72" fill="#2e2e2c" font-family="monospace" font-size="6.5">esta brecha.</text>
-
-      <text x="18" y="140" fill="#222" font-family="monospace" font-size="6.5"
-            transform="rotate(-90,18,140)" text-anchor="middle">ESTADO</text>
-    </svg>
-
-    <div class="t-mono" style="color:#333;font-size:.52rem;line-height:2;text-align:center;margin-top:1rem;">
-      Si LDI &gt; velocidad de degradación:<br>
-      <span class="c-red">el colapso es matemáticamente inevitable.</span>
-    </div>
-
-  </div>
-</div>
-
-<!-- MIHM · HOJA 2 · NTI -->
-<div class="page pg-black">
-  <div class="col pad" style="justify-content:space-between;">
-
-    <div>
-      <div class="t-kicker" style="color:#2a2a28;margin-bottom:1rem;letter-spacing:.22em;">
-        NTI · Nodo de Trazabilidad Institucional
-      </div>
-
-      <div class="t-display c-gold" style="font-size:clamp(1.4rem,4.5vw,2.6rem);line-height:1.0;margin-bottom:1.1rem;">
-        Antes de medir,<br>
-        audita lo que<br>
-        mide.
-      </div>
-
-      <div class="t-body" style="color:#5a5a58;line-height:1.9;">
-        El NTI no mide el recurso. Mide la integridad de la señal que lo describe.
-        Por debajo de 0.50 el sistema entra en <span class="c-red">modo ciego</span>.
-      </div>
-    </div>
-
-    <svg viewBox="0 0 280 68" style="width:100%;height:auto;">
-      <rect x="10" y="24" width="260" height="8" rx="4" fill="#111"></rect>
-      <rect x="10" y="24" width="130" height="8" rx="4" fill="rgba(184,80,80,.25)"></rect>
-      <rect x="10" y="24" width="91" height="8" rx="4" fill="rgba(184,80,80,.55)"></rect>
-      <rect x="99" y="19" width="2" height="18" fill="var(--red)"></rect>
-
-      <text x="97" y="49" font-family="monospace" font-size="7" fill="var(--red)" text-anchor="middle">NTI 0.351</text>
-      <text x="10" y="16" font-family="monospace" font-size="7" fill="#282826">0.0</text>
-      <text x="138" y="16" font-family="monospace" font-size="7" fill="#484846">0.50</text>
-      <text x="264" y="16" font-family="monospace" font-size="7" fill="#282826" text-anchor="end">1.0</text>
-    </svg>
-
-    <div class="t-mono-sm" style="line-height:2;">
-      NTI actual: <span class="c-red">0.351</span> → <span class="c-red">BLIND MODE</span><br>
-      Decisiones estructurales: BLOQUEADAS
-    </div>
-
-  </div>
-</div>
-
-<!-- MIHM · HOJA 3 · IHG + ESTADO -->
-<div class="page pg-black">
-  <div class="col pad" style="justify-content:space-between;">
-
-    <div>
-      <div class="t-kicker" style="color:#2a2a28;margin-bottom:.9rem;letter-spacing:.22em;">
-        Nodo AGS · Aguascalientes · México
-      </div>
-
-      <div class="t-display c-gold" style="font-size:clamp(1.3rem,4.2vw,2.1rem);line-height:1.05;">
-        El sistema<br>ya no grita.
-      </div>
-
-      <div class="t-body" style="color:#555;line-height:1.9;">
-        El umbral oficial ha sido superado sin reconocimiento institucional.
-      </div>
-    </div>
-
+<div class="page">
+  <div class="col">
+    <div class="t-kicker">01 · diagnóstico</div>
+    <div class="t-title">Fricción detectada<br>en tu sistema</div>
+    <div class="gold-rule"></div>
+    
     <div class="metric-row">
-      <div class="metric-box" style="border-color:rgba(184,80,80,.35);background:rgba(184,80,80,.04);">
-        <div class="metric-val c-red">−0.620</div>
-        <div class="metric-lbl" style="color:var(--red);">IHG · estado</div>
+      <div class="metric-card">
+        <div class="metric-value" id="ihg-val">{{IHG}}</div>
+        <div class="metric-label">IHG · Fricción</div>
       </div>
-
-      <div class="metric-box" style="border-color:rgba(74,122,170,.3);background:rgba(74,122,170,.04);">
-        <div class="metric-val c-blue">0.351</div>
-        <div class="metric-lbl">NTI · integridad</div>
+      <div class="metric-card">
+        <div class="metric-value" id="nti-val">{{NTI}}</div>
+        <div class="metric-label">NTI · Trazabilidad</div>
       </div>
-
-      <div class="metric-box" style="border-color:rgba(200,169,81,.25);">
-        <div class="metric-val c-gold">22d</div>
-        <div class="metric-lbl c-gold">LDI · latencia</div>
+      <div class="metric-card">
+        <div class="metric-value" id="ldi-val">{{LDI}}</div>
+        <div class="metric-label">LDI · Latencia</div>
       </div>
     </div>
 
-    <div class="t-mono-sm" style="line-height:2;">
-      P(colapso @180d) = <span class="c-red">0.31</span><br>
-      Estado: <span class="c-red">CRÍTICO</span>
+    <div class="t-body" id="narrativa-diagnostico">
+      <!-- Esta narrativa se construye automáticamente con los valores calculados -->
     </div>
-
+    <div class="flow-diag" id="diagnostico-flujo"></div>
   </div>
+  <div class="page-num">2 / 5</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     MÓDULO DE INTERVENCIÓN · SF-004
+     TUS RESPUESTAS (inyectadas por el bot)
      ═══════════════════════════════════════════════════════ -->
-
-<!-- PÁGINA 1 · PORTADA -->
-<div class="page">
-  <div class="col" style="justify-content: center; text-align: center;">
-    <div class="t-kicker" style="margin-bottom: 1rem; letter-spacing: 0.4em;">System Friction Institute</div>
-    <div style="font-family: var(--disp); font-size: 2rem; font-weight: 700; letter-spacing: -0.02rem;">MÓDULO DE</div>
-    <div style="font-family: var(--disp); font-size: 1.8rem; font-weight: 700; color: var(--gold); margin-top: -0.2rem;">INTERVENCIÓN</div>
-    <div class="gold-rule" style="margin: 1.2rem auto; width: 60px;"></div>
-    <div class="t-body-sm" style="color: var(--ink3);">SF-004 · 2026-04-20<br>Fenómeno: Subutilización Sistémica Digital</div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body-sm" style="max-width: 85%; margin: 0 auto;">Acciones derivadas del dictamen estructural.<br>Sin diagnóstico adicional.</div>
-  </div>
-  <div class="page-num">M-0</div>
-</div>
-
-<!-- DESCANSO VISUAL LOGO DE LA INSTITUCIÓN -->
-<div class="page">
-  <div class="col" style="justify-content: center; text-align: center;">
-  <div class="rombo-sf" style="margin-bottom: 1.2rem;"><span>SF</span></div>
-  <div class="page-num">M-0</div>
-</div>
-</div>
-
-<!-- M-1 · REASIGNACIÓN DE ENERGÍA -->
 <div class="page">
   <div class="col">
-    <div class="t-kicker">M-01 · reasignación de energía</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1rem);">Arquitectura objetivo</div>
-    <div class="flow-diag">
-      ACTUAL<br>
-      Usuario → contenido → salida<br><br>
-      OBJETIVO<br>
-      Usuario → filtro → validación → acción → datos → ajuste
-    </div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">1</div><div class="var-desc">Definir atractor único (cotización, diagnóstico o contacto calificado)</div></div>
-      <div class="var-row"><div class="var-code">2</div><div class="var-desc">Implementar filtro de entrada con variables críticas: tipo de cliente, volumen, necesidad real</div></div>
-      <div class="var-row"><div class="var-code">3</div><div class="var-desc">Insertar evidencia operativa (casos reales + datos técnicos)</div></div>
-      <div class="var-row"><div class="var-code">4</div><div class="var-desc">Reducir rutas: máximo 3 pasos a acción</div></div>
-      <div class="var-row"><div class="var-code">5</div><div class="var-desc">Activar captura: todo evento genera dato</div></div>
+    <div class="t-kicker">02 · registro</div>
+    <div class="t-title">Tus respuestas<br>al MOP-H</div>
+    <div class="gold-rule"></div>
+    <div class="var-grid" id="respuestas-usuario">
+      <!-- RESPUESTAS_USUARIO -->
     </div>
   </div>
-  <div class="page-num">M-1</div>
+  <div class="page-num">3 / 5</div>
 </div>
 
-<!-- M-2 · ACCIÓN DERIVADA 72h -->
+<!-- ═══════════════════════════════════════════════════════
+     INTERPRETACIÓN
+     ═══════════════════════════════════════════════════════ -->
 <div class="page">
   <div class="col">
-    <div class="t-kicker">M-02 · acción derivada (72h)</div>
-    <div class="t-title" style="font-size: clamp(0.9rem, 4.5vw, 1rem);">Variable objetivo: Sᵤ</div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body"><strong>Acción:</strong></div>
-    <div class="t-body-sm">Día 1–3:</div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">1</div><div class="var-desc">Crear formulario único de entrada con 3 preguntas: ¿Qué necesitas? ¿Para cuándo? ¿Volumen estimado?</div></div>
-      <div class="var-row"><div class="var-code">2</div><div class="var-desc">Redirigir TODO el tráfico a ese punto</div></div>
-      <div class="var-row"><div class="var-code">3</div><div class="var-desc">Registrar: número de entradas, respuestas, abandono</div></div>
-    </div>
-    <div class="gold-rule-full"></div>
-    <div class="t-body-sm"><strong>Criterio de éxito:</strong> Primera visibilidad de patrón de demanda real</div>
-    <div class="gold-rule-full"></div>
-    <div class="t-mono-sm" style="color: var(--gold);">→ Si no se ejecuta en 72h, el sistema permanece en estado actual.</div>
+    <div class="t-kicker">03 · interpretación</div>
+    <div class="t-title">Lo que significa<br>para ti</div>
+    <div class="gold-rule"></div>
+    <div class="t-body" id="narrativa-interpretacion"></div>
+    <div class="flow-diag" id="interpretacion-flujo"></div>
   </div>
-  <div class="page-num">M-2</div>
+  <div class="page-num">4 / 5</div>
 </div>
 
-<!-- M-3 · BITÁCORA -->
+<!-- ═══════════════════════════════════════════════════════
+     RECOMENDACIONES Y CIERRE
+     ═══════════════════════════════════════════════════════ -->
 <div class="page">
   <div class="col">
-    <div class="t-kicker">M-03 · bitácora</div>
-    <div class="t-title" style="font-size: clamp(0.8rem, 4vw, 0.9rem);">Registro de ejecución</div>
-    <div class="gold-rule-full"></div>
-    <div class="var-grid">
-      <div class="var-row"><div class="var-code">Día 1</div><div class="var-desc">Entradas: _______ / Patrón detectado: _______</div></div>
-      <div class="var-row"><div class="var-code">Día 2</div><div class="var-desc">Entradas: _______ / Patrón detectado: _______</div></div>
-      <div class="var-row"><div class="var-code">Día 3</div><div class="var-desc">Entradas: _______ / Patrón detectado: _______</div></div>
+    <div class="t-kicker">04 · vector de movimiento</div>
+    <div class="t-title">Qué hacer<br>con esto</div>
+    <div class="gold-rule"></div>
+    <div class="t-body" id="narrativa-recomendaciones"></div>
+    <div class="gold-rule"></div>
+    <div class="t-body" style="font-style: italic; text-align: center;">
+      La medición modifica lo medido.<br>
+      Este documento ya no describe tu fricción.<br>
+      Es parte de tu fricción.<br>
+      Ahora actúa.
     </div>
-    <div class="gold-rule-full"></div>
-    <div class="t-mono-sm">Si no se ejecuta, marcar: ☐ No ejecutado. Sin explicación.</div>
+    <div class="gold-rule"></div>
+    <div class="t-body" style="text-align: center; font-size: 0.7rem;">
+      System Friction Institute · Dictamen SF-004<br>
+      Este documento es válido para el momento de su emisión.
+    </div>
   </div>
-  <div class="page-num">M-3</div>
+  <div class="page-num">5 / 5</div>
 </div>
 
-<!-- M-X · CIERRE -->
-<div class="page">
-  <div class="col" style="justify-content: center; align-items: center; text-align: center;">
-    <div class="glyph-friction" style="position: relative; width: 32px; height: 32px; margin-bottom: 1rem; opacity: 0.3;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="0.8"><path d="M2 12 L6 8 L10 16 L14 7 L18 14 L22 10" stroke-linecap="round"></path></svg>
-    </div>
-    <div class="t-body">El sistema no requiere rediseño inicial.<br>Requiere instrumentación.</div>
-    <div class="flow-diag" style="margin: 0.5rem 0; text-align: center;">
-      ANTES: ver<br>
-      DESPUÉS: medir → decidir → ajustar
-    </div>
-    <div class="gold-rule" style="margin: 1rem auto;"></div>
-    <div class="t-mono-sm" style="letter-spacing: 0.2em; color: var(--gold-dim);">Fin del módulo de intervención</div>
-    <div class="t-body-sm">SF-004 · 2026-04-20</div>
-  </div>
-  <div class="page-num">M-0</div>
-</div>
+<script>
+// ============================================================
+// NARRATIVA DINÁMICA SEGÚN MÉTRICAS
+// ============================================================
+(function() {
+    // Leer métricas desde los placeholders (inyectadas por el bot)
+    function getMetricValue(id, defaultValue) {
+        const el = document.getElementById(id);
+        if (el) {
+            let val = el.innerText.trim();
+            if (val && val !== id.replace('-val', '').toUpperCase()) return val;
+        }
+        return defaultValue;
+    }
 
+    const ihg = parseFloat(getMetricValue('ihg-val', '0.50'));
+    const nti = parseFloat(getMetricValue('nti-val', '0.50'));
+    const ldi = parseFloat(getMetricValue('ldi-val', '3.0'));
 
-</body></html>
+    // ========== DIAGNÓSTICO PERSONALIZADO ==========
+    let diagnosticoTexto = "";
+    if (ihg > 0.75) {
+        diagnosticoTexto = "Tu IHG es elevado. Esto indica una distancia significativa entre lo que declaras como intención y lo que efectivamente ejecutas. El sistema está absorbiendo fricción de manera invisible. La narrativa que construyes sobre tu realidad no coincide del todo con los resultados que obtienes. Esto no es fracaso. Es información pura.";
+    } else if (ihg > 0.45) {
+        diagnosticoTexto = "Tu IHG es medio-alto. Hay una brecha detectable entre lo que dices que quieres y lo que terminas haciendo. No es dramática, pero es persistente. Cada pequeño desajuste se acumula. La fricción no está en los grandes eventos, sino en los micro-momentos donde eliges no actuar.";
+    } else {
+        diagnosticoTexto = "Tu IHG es bajo. Muestras coherencia entre tu intención declarada y tu ejecución real. El sistema no miente. La distancia entre lo que dices y lo que haces es mínima. Esto no significa que no haya fricción, sino que la fricción que existe está siendo gestionada conscientemente.";
+    }
+
+    if (nti < 0.4) {
+        diagnosticoTexto += " Tu NTI está en zona crítica. La señal sobre tu estado real no está circulando sin distorsión. Esto puede deberse a que no quieres ver algo, a que te has acostumbrado a normalizar lo anómalo, o a que el canal por el que te comunicas contigo mismo está roto. Sin NTI, no hay diagnóstico fiable.";
+    } else if (nti < 0.7) {
+        diagnosticoTexto += " Tu NTI está medio. La información sobre tu estado real circula, pero con interferencias. Algo se pierde en el camino entre lo que percibes y lo que reconoces. Es posible que estés filtrando datos incómodos para mantener estabilidad. Eso tiene un costo: la fricción que no ves, no la atiendes.";
+    } else {
+        diagnosticoTexto += " Tu NTI es alto. La señal sobre tu estado real llega íntegra. No te mientes, o al menos no de forma sostenida. Esto es la base de cualquier proceso de cambio auténtico. La verdad incómoda ya está sobre la mesa. El resto es decisión.";
+    }
+
+    if (ldi > 4.0) {
+        diagnosticoTexto += " Tu LDI es muy alta. El tiempo entre que detectas una anomalía y ejecutas una acción correctiva supera el umbral de degradación. El sistema está acumulando errores más rápido de lo que los corrige. La urgencia no está en el problema. Está en la latencia.";
+    } else if (ldi > 2.5) {
+        diagnosticoTexto += " Tu LDI es media-alta. Hay una brecha entre que te das cuenta y actúas. No es colapso, pero sí arrastre. Cada ciclo sin acción aumenta la fricción del siguiente. El tiempo no es neutral. Decide.";
+    } else {
+        diagnosticoTexto += " Tu LDI es baja. Actúas cerca del momento de percepción. Eso te da ventaja: tu capacidad de corrección supera a la velocidad de degradación. El tiempo juega a tu favor. Úsalo.";
+    }
+
+    document.getElementById('narrativa-diagnostico').innerText = diagnosticoTexto;
+
+    // Flujo causal del diagnóstico
+    const flujoDiagnostico = `🔹 Cadena causal detectada:\n[Percepción] → [Latencia: ${ldi}] → [Ejecución] = IHG ${ihg}\n🔸 Recomendación prioritaria: `;
+    document.getElementById('diagnostico-flujo').innerHTML = flujoDiagnostico + (ldi > 3.0 ? "Reducir LDI antes de intentar mejorar IHG." : (nti < 0.5 ? "Restaurar NTI: la señal debe ser íntegra." : "Mantener coherencia. La fricción ya se redujo."));
+
+    // ========== INTERPRETACIÓN ==========
+    let interpretacionTexto = "";
+    if (ihg > 0.7 && nti < 0.5) {
+        interpretacionTexto = "Estás atrapado en un bucle de optimización de apariencia. El sistema prioriza parecer coherente antes que serlo. La energía que gastas en mantener la narrativa es energía que no inviertes en resolver la fricción de fondo. El riesgo no es el colapso inmediato. Es la erosión silenciosa.";
+    } else if (ldi > 4.0) {
+        interpretacionTexto = "El tiempo es tu variable crítica. No es que no sepas qué hacer. Es que la brecha entre saber y actuar se ha vuelto estructural. El costo de esa latencia ya es mayor que el costo de equivocarte. El movimiento, aunque sea errático, será más útil que la quietud.";
+    } else if (ihg < 0.4 && nti > 0.7) {
+        interpretacionTexto = "Hay alta coherencia y buena trazabilidad. El sistema no miente. La fricción que persiste no es por falta de claridad, sino por elección. Ya sabes qué no estás dispuesto a cambiar. Eso no es un bloqueo. Es un límite consciente. ¿Te sirve?";
+    } else {
+        interpretacionTexto = "Tu estado es mixto. Hay áreas de coherencia y áreas de latencia. No hay un solo patrón. La intervención más efectiva no será general, sino local. Identifica en qué área específica la distancia entre lo que declaras y lo que haces es máxima. Ahí actúa.";
+    }
+    document.getElementById('narrativa-interpretacion').innerText = interpretacionTexto;
+
+    const flujoInterpretacion = `▲ Atractor detectado: ${ihg > 0.6 ? 'fricción dispersa' : (ihg < 0.4 ? 'coherencia dinámica' : 'equilibrio inestable')}\n▼ Vector de fricción: ${ldi > 3.0 ? 'tiempo' : (nti < 0.5 ? 'señal' : 'ejecución')}`;
+    document.getElementById('interpretacion-flujo').innerHTML = flujoInterpretacion;
+
+    // ========== RECOMENDACIONES ==========
+    let recomendacionTexto = "";
+    if (ldi > 4.0) {
+        recomendacionTexto = "1. Reduce la LDI antes que nada. Elige una acción pequeña que hayas postergado y ejecútala antes de 24 horas. No importa cuál. Solo hazla.\n2. Después, mide de nuevo tu IHG. La reducción de latencia tiene efectos dominó.\n3. No intentes corregir todo a la vez. Una sola decisión ejecutada es más valiosa que diez diagnósticos perfectos.";
+    } else if (ihg > 0.7) {
+        recomendacionTexto = "1. Identifica la promesa más importante que te has hecho a ti mismo y que no has cumplido.\n2. Pregúntate: ¿qué ganancia oculta obtienes al no cumplirla?\n3. Si la respuesta es honesta, la fricción se reducirá sola. Si no lo es, la LDI aumentará. El sistema no miente.";
+    } else if (nti < 0.5) {
+        recomendacionTexto = "1. Restaura el canal de comunicación contigo mismo. Escribe sin filtros durante 10 minutos al día. No muestres lo que escribes a nadie.\n2. A la semana, relee. La distancia entre lo que sentías y lo que escribiste es tu NTI personal.\n3. Cuando esa distancia se reduzca, el resto de las métricas se ajustarán solas.";
+    } else {
+        recomendacionTexto = "1. Tu diagnóstico es estable. La fricción existe, pero está siendo gestionada.\n2. El siguiente nivel no es eliminar la fricción. Es aprender a usarla como vector de movimiento. Pregúntate: ¿dónde estoy siendo demasiado tolerante con mi propia incoherencia?\n3. Ahí actúa. El resto es mantenimiento.";
+    }
+    document.getElementById('narrativa-recomendaciones').innerText = recomendacionTexto;
+})();
+</script>
+</body>
+</html>
