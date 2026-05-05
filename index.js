@@ -1,3 +1,18 @@
+const express = require("express");
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+// Servidor web mínimo SOLO para que Render no mate el proceso
+app.get("/", (req, res) => {
+  res.send("SF Bot is running.");
+});
+
+app.listen(PORT, () => {
+  console.log("Dummy web server running on port", PORT);
+});
+
+// ===== BOT DE TELEGRAM =====
 const TelegramBot = require("node-telegram-bot-api");
 const fs = require("fs");
 const puppeteer = require("puppeteer");
@@ -40,7 +55,7 @@ bot.on("message", async (msg) => {
   } else {
     bot.sendMessage(
       id,
-      "Gracias. Para descargar tu dictamen SF‑004 realiza el pago (simulado).\nEn unos segundos recibirás tu PDF."
+      "Gracias. En unos segundos recibirás tu dictamen SF‑004."
     );
 
     const pdf = await generatePDF();
@@ -55,7 +70,10 @@ async function generatePDF() {
   const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });
-  const pdf = await page.pdf({ format: "A4", printBackground: true });
+  const pdf = await page.pdf({
+    format: "A4",
+    printBackground: true
+  });
   await browser.close();
   return pdf;
 }
