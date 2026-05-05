@@ -41,7 +41,7 @@ const QUESTIONS = [
 ];
 
 // ========== 3. SESIONES EN MEMORIA ==========
-const sessions = new Map(); // chatId -> { step, answers }
+const sessions = new Map();
 
 // ========== 4. FUNCIONES AUXILIARES ==========
 function calculateMetrics(answers) {
@@ -103,15 +103,14 @@ app.post(`/webhook/${TOKEN}`, async (req, res) => {
         if (session.step < QUESTIONS.length) {
             await bot.sendMessage(chatId, QUESTIONS[session.step]);
         } else {
-            // Crear enlace de pago único para este usuario
             const YOUR_DOMAIN = process.env.YOUR_DOMAIN || "https://tu-sitio.com";
             const stripeSession = await stripe.checkout.sessions.create({
                 payment_method_types: ['card'],
                 line_items: [{
                     price_data: {
-                        currency: 'mxn', // o 'usd'
+                        currency: 'mxn',
                         product_data: { name: 'Dictamen Estructural SF-004 + MIHM v3.0' },
-                        unit_amount: 30000, // $300 MXN (ajusta)
+                        unit_amount: 30000,
                     },
                     quantity: 1,
                 }],
@@ -122,7 +121,7 @@ app.post(`/webhook/${TOKEN}`, async (req, res) => {
                 cancel_url: `${YOUR_DOMAIN}/cancel.html`,
             });
             await bot.sendMessage(chatId, `✅ Diagnóstico completado.\n\nPara recibir tu dictamen, paga aquí:\n${stripeSession.url}`);
-            sessions.delete(chatId); // Limpiamos, las respuestas están en metadata de Stripe
+            sessions.delete(chatId);
         }
         return res.sendStatus(200);
     }
