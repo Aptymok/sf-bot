@@ -449,7 +449,169 @@
   </div>
   <div class="page-num">8 / 8</div>
 </div>
+<!-- ═══════════════════════════════════════════════════════
+     SÍNTESIS MÉTRICA · MIHM v3.0
+     ═══════════════════════════════════════════════════════ -->
+<div class="page pg-black">
+  <!-- IHG / NTI / LDI · GRÁFICA -->
+  <!-- === CONTENIDO MIHM v3.0 === -->
 
+  <div class="center">
+    <div class="dot-gold" style="width:7px;height:7px;left:42%;top:52%;opacity:.38;"></div>
+  </div>
+<div class="half-r" style="background:#030302;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div class="t-kicker" style="color:#2a2a28;margin-bottom:1.2rem;text-align:center;letter-spacing:.22em;">
+      Distancia entre umbrales · LDI
+    </div>
+    <svg viewBox="0 0 440 250" style="width:90%;max-width:400px;height:auto;">
+      <rect x="75" y="38" width="290" height="175" fill="rgba(200,169,81,.025)" rx="2"></rect>
+      <line x1="38" y1="195" x2="408" y2="195" stroke="#1e1e1c" stroke-width=".8"></line>
+      <text x="408" y="210" fill="#2e2e2c" font-family="monospace" font-size="7.5" text-anchor="end" letter-spacing=".5">tiempo →</text>
+      <!-- Umbral declarado -->
+      <line x1="58" y1="78" x2="385" y2="78" stroke="#323230" stroke-width=".9" stroke-dasharray="6,4"></line>
+      <text x="388" y="81" fill="#484846" font-family="monospace" font-size="7" letter-spacing=".3">umbral declarado</text>
+      <!-- Umbral real (degradante) -->
+      <path d="M 58 98 C 155 103, 255 128, 385 162" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".65"></path>
+      <text x="388" y="162" fill="rgba(200,169,81,.65)" font-family="monospace" font-size="7" letter-spacing=".3">umbral real</text>
+      <!-- Área brecha -->
+      <path d="M 58 78 C 155 78, 255 78, 385 78 C 255 128, 155 103, 58 98 Z" fill="rgba(200,169,81,.04)"></path>
+      <!-- Flecha LDI -->
+      <line x1="225" y1="82" x2="225" y2="127" stroke="rgba(184,80,80,.48)" stroke-width=".9"></line>
+      <polygon points="221,125 225,134 229,125" fill="rgba(184,80,80,.48)"></polygon>
+      <text x="230" y="114" fill="rgba(184,80,80,.58)" font-family="monospace" font-size="7">LDI</text>
+      <!-- UCAP event -->
+      <circle cx="342" cy="158" r="4" fill="none" stroke="rgba(184,80,80,.65)" stroke-width="1.2"></circle>
+      <text x="350" y="161" fill="rgba(184,80,80,.55)" font-family="monospace" font-size="7">UCAP</text>
+      <text x="58" y="60" fill="#2e2e2c" font-family="monospace" font-size="6.5" letter-spacing=".5">NTI mide</text>
+      <text x="58" y="72" fill="#2e2e2c" font-family="monospace" font-size="6.5" letter-spacing=".5">esta brecha.</text>
+      <text x="18" y="140" fill="#222" font-family="monospace" font-size="6.5" transform="rotate(-90,18,140)" text-anchor="middle" letter-spacing=".5">ESTADO</text>
+    </svg>
+    <div style="margin-top:1.2rem;max-width:75%;text-align:center;">
+      <div class="t-mono" style="color:#333;font-size:.5rem;line-height:2;">
+        Si LDI &gt; velocidad de degradación:<br>
+        <span class="c-red">el colapso es matemáticamente inevitable.</span>
+      </div>
+    </div>
+  </div>
+
+
+<div class="page pg-black">
+  <div class="col pad" style="justify-content:space-between;">
+    <div>
+      <div class="t-kicker" style="color:#2a2a28;margin-bottom:1rem;letter-spacing:.22em;">
+        NTI · Nodo de Trazabilidad Institucional
+      </div>
+      <div class="t-display c-gold" style="font-size:clamp(1.4rem,4.5vw,2.6rem);line-height:1.0;margin-bottom:1.1rem;">
+        Antes de medir,<br>
+        audita lo que<br>
+        mide.
+      </div>
+      <div class="t-body" style="color:#5a5a58;line-height:1.9;font-size:clamp(.74rem,1.8vw,.88rem);">
+        El NTI no mide el recurso. Mide la <em style="color:#888;font-style:normal;">integridad de la señal</em> que lo describe. Si hay manipulación, sesgo sistemático o datos insuficientes, el NTI lo detecta y degrada la confianza en las variables derivadas.<br><br>
+        Por debajo de 0.50 el sistema entra en <em style="color:var(--red);font-style:normal;">modo ciego</em>: puede seguir calculando, pero sus decisiones estructurales quedan bloqueadas.
+      </div>
+    </div>
+    <div>
+      <svg viewBox="0 0 280 68" style="width:100%;height:auto;">
+        <rect x="10" y="24" width="260" height="8" rx="4" fill="#111"></rect>
+        <rect x="10" y="24" width="130" height="8" rx="4" fill="rgba(184,80,80,.25)"></rect>
+        <rect x="10" y="24" width="91" height="8" rx="4" fill="rgba(184,80,80,.55)"></rect>
+        <rect x="99" y="19" width="2" height="18" fill="var(--red)"></rect>
+        <text x="97" y="49" font-family="monospace" font-size="7" fill="var(--red)" text-anchor="middle">NTI 0.351</text>
+        <text x="10" y="16" font-family="monospace" font-size="7" fill="#282826">0.0</text>
+        <text x="138" y="16" font-family="monospace" font-size="7" fill="#484846">0.50</text>
+        <text x="264" y="16" font-family="monospace" font-size="7" fill="#282826" text-anchor="end">1.0</text>
+        <text x="140" y="58" font-family="monospace" font-size="6" fill="#2e2e2c" text-anchor="middle">umbral estructural</text>
+        <text x="55" y="42" font-family="monospace" font-size="6" fill="rgba(184,80,80,.45)" text-anchor="middle">BLIND MODE</text>
+        <text x="200" y="42" font-family="monospace" font-size="6" fill="rgba(58,138,90,.4)" text-anchor="middle">OPERACIONAL</text>
+      </svg>
+      <div style="font-family:var(--mono);font-size:.48rem;color:#282826;line-height:2;margin-top:.4rem;">
+        NTI actual: <span class="c-red">0.351</span> &lt; 0.40 → <span class="c-red">BLIND MODE</span><br>
+        Decisiones estructurales irreversibles: BLOQUEADAS<br>
+        Requiere NTI ≥ 0.70 para cambios estructurales
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="half-l" style="display:flex;flex-direction:column;justify-content:space-between;">
+    <div>
+      <div class="t-kicker" style="color:#2a2a28;margin-bottom:.9rem;letter-spacing:.22em;">
+        Nodo AGS · Aguascalientes · México
+      </div>
+      <div class="t-display c-gold" style="font-size:clamp(1.3rem,4.2vw,2.1rem);line-height:1.05;margin-bottom:1rem;">
+        El sistema<br>
+        ya no grita.<br>
+        <span style="color:#3a3a38;font-size:.65em;">Eso es lo que más asusta.</span>
+      </div>
+      <div class="t-body" style="color:#555;line-height:1.9;font-size:clamp(.72rem,1.78vw,.87rem);">
+        Nodo empírico de validación del marco MIHM. Un sistema de gestión hídrica y de infraestructura crítica que ha alcanzado el límite operativo de su umbral oficial sin que la institución lo reconozca.<br><br>
+        Los reportes dicen que todo está bien.<br>
+        <em style="color:#777;font-style:normal;">Pero la señal real dice otra cosa.</em>
+      </div>
+    </div>
+    <div>
+      <div class="metric-row">
+        <div class="metric-box" style="border-color:rgba(184,80,80,.35);background:rgba(184,80,80,.04);">
+          <div class="metric-val c-red">−0.620</div>
+          <div class="metric-lbl" style="color:var(--red);">IHG · estado</div>
+        </div>
+        <div class="metric-box" style="border-color:rgba(74,122,170,.3);background:rgba(74,122,170,.04);">
+          <div class="metric-val c-blue">0.351</div>
+          <div class="metric-lbl" style="color:var(--blue);">NTI · integridad</div>
+        </div>
+        <div class="metric-box" style="border-color:rgba(200,169,81,.25);">
+          <div class="metric-val c-gold">22d</div>
+          <div class="metric-lbl c-gold">LDI · latencia</div>
+        </div>
+      </div>
+      <div style="font-family:var(--mono);font-size:.46rem;color:#2a2a28;line-height:2;margin-top:.4rem;">
+        P(colapso @180d) = <span class="c-red">0.31</span> · IC95% [0.306, 0.314]<br>
+        Estado: <span class="c-red">■ CRÍTICO</span> · Decisiones estructurales: BLOQUEADAS
+      </div>
+    </div>
+  </div>
+
+<div class="col pad" style="justify-content:space-between;">
+    <div>
+      <div class="t-kicker" style="color:#2a2a28;letter-spacing:.25em;margin-bottom:.8rem;">Capa 7 · Intervención · el momento de actuar</div>
+      <div class="t-display c-gold" style="font-size:clamp(1.3rem,4.2vw,2.1rem);line-height:1.0;margin-bottom:.8rem;">
+        El sistema sabe<br>cuándo actuar.<br>
+        <span style="color:#444;font-size:.6em;">¿Lo escuchas?</span>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:.45rem;justify-content:center;">
+      <div style="display:grid;grid-template-columns:auto 1fr auto;gap:.48rem;align-items:center;padding:.52rem;border-left:2px solid rgba(58,138,90,.48);background:rgba(58,138,90,.04);">
+        <div style="font-size:1.1rem;color:#3a8a5a;">●</div>
+        <div><div style="font-family:var(--mono);font-size:.48rem;color:#3a8a5a;">ESTABLE · IHG ≥ −0.4</div><div class="t-body-sm" style="color:#444;margin-top:.08rem;">Monitoreo pasivo. Sin cambios estructurales.</div></div>
+        <div style="font-family:var(--mono);font-size:.42rem;color:#1a2a1a;text-align:right;">no acción</div>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr auto;gap:.48rem;align-items:center;padding:.52rem;border-left:2px solid rgba(200,169,81,.48);background:rgba(200,169,81,.04);">
+        <div style="font-size:1.1rem;color:var(--gold);">▲</div>
+        <div><div style="font-family:var(--mono);font-size:.48rem;color:var(--gold);">ATENCIÓN · IHG −0.8 a −0.4</div><div class="t-body-sm" style="color:#444;margin-top:.08rem;">Activar telemetría. Distribuir conocimiento (anti-ICC).</div></div>
+        <div style="font-family:var(--mono);font-size:.42rem;color:#2a2010;text-align:right;">ΔIHG +0.08</div>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr auto;gap:.48rem;align-items:center;padding:.52rem;border-left:2px solid rgba(184,80,80,.55);background:rgba(184,80,80,.04);">
+        <div style="font-size:1.1rem;color:var(--red);">■</div>
+        <div><div style="font-family:var(--mono);font-size:.48rem;color:var(--red);">CRÍTICO · IHG −1.4 a −0.8</div><div class="t-body-sm" style="color:#444;margin-top:.08rem;">Restaurar NTI. Reducir LDI. Intervención estructural.</div></div>
+        <div style="font-family:var(--mono);font-size:.42rem;color:#3a1010;text-align:right;">ΔIHG +0.18</div>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr auto;gap:.48rem;align-items:center;padding:.52rem;border-left:2px solid rgba(255,50,50,.6);background:rgba(255,50,50,.04);">
+        <div style="font-size:1.1rem;color:#ff4040;">✖</div>
+        <div><div style="font-family:var(--mono);font-size:.48rem;color:#ff4040;">COLAPSO · IHG &lt; −1.4</div><div class="t-body-sm" style="color:#444;margin-top:.08rem;">H3 override. Acción de emergencia. Documentar todo.</div></div>
+        <div style="font-family:var(--mono);font-size:.42rem;color:#3a1010;text-align:right;">EMERGENCY</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #111;padding-top:.55rem;">
+      <div style="font-family:var(--mono);font-size:.42rem;color:#1e1e1c;line-height:2;">Capa 7 · Sistema Friction · Nodo AGS-06 · 2026</div>
+    </div>
+  </div>
+<div class="center">
+    <div class="dot-gold" style="width:7px;height:7px;left:42%;top:52%;opacity:.38;"></div>
+  </div>
+  <!-- FIN MIHM -->
+ 
 <!-- ═══════════════════════════════════════════════════════
      MÓDULO DE INTERVENCIÓN · SF-004
      ═══════════════════════════════════════════════════════ -->
